@@ -100,12 +100,11 @@ class AVLTree:
         else:
             self.update_balance(pivot)
             if pivot.balance > 1:
-                if data < pivot.left.data:
+                if data > pivot.left.data:
                     print("Case #3b: adding a node to an inside subtree (LR Rotation)")
                     self._lr_rotate(pivot)
-                elif data > pivot.left.data:
+                elif data < pivot.left.data:
                     print("Case #3a: adding a node to an outside subtree")
-                    self._left_rotate(pivot.left)
                     self._right_rotate(pivot)
             elif pivot.balance < -1:
                 if data > pivot.right.data:
