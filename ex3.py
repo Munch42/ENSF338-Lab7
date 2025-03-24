@@ -117,3 +117,4 @@ tree.insert(25)  # Case 3b: not supported
 tree.insert(12)  # Case 3a: adding a node to an outside subtree
 tree.insert(35)  # Case 3b: not supported
 tree.insert(40)  # Case 3b: not supported
+
