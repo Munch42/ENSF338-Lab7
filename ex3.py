@@ -87,28 +87,33 @@ class AVLTree:
             print("Case #1: Pivot not detected")
         else:
             self.update_balance(pivot)
-            if (pivot.balance > 1 and data < pivot.left.data) or (pivot.balance < -1 and data > pivot.right.data):
-                print("Case #2: A pivot exists, and a node was added to the shorter subtree")
-            elif (pivot.balance > 1 and data > pivot.left.data):
-                print("Case #3a: adding a node to an outside subtree")
-                self._left_rotate(pivot.left)
-                self._right_rotate(pivot)
-            elif (pivot.balance < -1 and data < pivot.right.data):
-                print("Case #3a: adding a node to an outside subtree")
-                self._right_rotate(pivot.right)
-                self._left_rotate(pivot)
+            if pivot.balance > 1:
+                if data < pivot.left.data:
+                    print("Case #3b: not supported")
+                elif data > pivot.left.data:
+                    print("Case #3a: adding a node to an outside subtree")
+                    self._left_rotate(pivot.left)
+                    self._right_rotate(pivot)
+            elif pivot.balance < -1:
+                if data > pivot.right.data:
+                    print("Case #3b: not supported")
+                elif data < pivot.right.data:
+                    print("Case #3a: adding a node to an outside subtree")
+                    self._right_rotate(pivot.right)
+                    self._left_rotate(pivot)
             else:
-                print("Case #3b: not supported")
+                print("Case #2: A pivot exists, and a node was added to the shorter subtree")
+
 
 # Test cases
 tree = AVLTree()
 
 tree.insert(10)  # Case 1: Pivot not detected
 tree.insert(20)  # Case 1: Pivot not detected
-tree.insert(30)  # Case 2: Pivot exists, shorter subtree
+tree.insert(30)  # Case 3b: not supported
 tree.insert(5)   # Case 1: Pivot not detected
 tree.insert(15)  # Case 1: Pivot not detected
-tree.insert(25)  # Case 2: Pivot exists, shorter subtree
+tree.insert(25)  # Case 3b: not supported
 tree.insert(12)  # Case 3a: adding a node to an outside subtree
-tree.insert(35)  # Case 2: Pivot exists, shorter subtree
-tree.insert()  # Case 3b: not supported
+tree.insert(35)  # Case 3b: not supported
+tree.insert(40)  # Case 3b: not supported
